@@ -42,4 +42,9 @@ return [
      * HTTP URI to post the Client ID to (from the Blade Directive).
      */
     'http_uri' => '/gaid',
+
+    /**
+     * GA Protocol version
+     */
+    'protocol_version' => 2,
 ];
