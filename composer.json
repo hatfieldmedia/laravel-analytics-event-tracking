@@ -1,8 +1,8 @@
 {
-    "name": "protonemedia/laravel-analytics-event-tracking",
+    "name": "hatfieldmedia/laravel-analytics-event-tracking",
     "description": "Laravel package to easily send events to Google Analytics",
     "keywords": [
-        "protonemedia",
+        "hatfieldmedia",
         "laravel",
         "google-analytics",
         "laravel-analytics",
@@ -10,7 +10,7 @@
         "laravel-analytics-event-tracking",
         "analytics-event-tracking"
     ],
-    "homepage": "https://github.com/protonemedia/laravel-analytics-event-tracking",
+    "homepage": "https://github.com/hatfieldmedia/laravel-analytics-event-tracking",
     "license": "MIT",
     "type": "library",
     "authors": [
