@@ -11,6 +11,7 @@ use ProtoneMedia\AnalyticsEventTracking\Analytics\EventBroadcaster;
 use ProtoneMedia\AnalyticsEventTracking\Http\ClientIdRepository;
 use ProtoneMedia\AnalyticsEventTracking\Http\ClientIdSession;
 use ProtoneMedia\AnalyticsEventTracking\Http\StoreClientIdInSession;
+use ProtoneMedia\AnalyticsEventTracking\Http\StoreSessionIdInSession;
 use ProtoneMedia\AnalyticsEventTracking\Listeners\DispatchAnalyticsJob;
 use TheIconic\Tracking\GoogleAnalytics\Analytics;
 
@@ -90,8 +91,11 @@ class ServiceProvider extends BaseServiceProvider
 
     private function registerRoute()
     {
-        if ($httpUri = config('analytics-event-tracking.http_uri')) {
-            Route::post($httpUri, StoreClientIdInSession::class)->middleware('web');
+        if ($httpUri = config('analytics-event-tracking.http_uri_cid')) {
+            Route::post($httpUri, [StoreClientIdInSession::class, '__invoke'])->middleware('web');
+        }
+        if ($httpUri = config('analytics-event-tracking.http_uri_sid')) {
+            Route::post($httpUri, [StoreSessionIdInSession::class, '__invoke'])->middleware('web');
         }
     }
 }

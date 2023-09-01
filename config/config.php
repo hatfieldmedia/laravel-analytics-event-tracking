@@ -41,7 +41,8 @@ return [
     /**
      * HTTP URI to post the Client ID to (from the Blade Directive).
      */
-    'http_uri' => '/gaid',
+    'http_uri_cid' => '/gacid',
+    'http_uri_sid' => '/gasid',
 
     /**
      * GA Protocol version
