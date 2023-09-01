@@ -14,7 +14,7 @@ window.axios.post('/gacid', { id: clientId });
 });
 
 gtag('get', @json(config('analytics-event-tracking.tracking_id')), 'session_id', function (sid) {
-if (sid != @json(app('analytics-event-tracker.session-id'))) {
+if (sid != @json(app('analytics-event-tracking.session-id'))) {
 window.axios.post('/gasid', { id: sid });
 }
 });
