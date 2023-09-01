@@ -10,6 +10,8 @@ use ProtoneMedia\AnalyticsEventTracking\Analytics\BroadcastEvent;
 use ProtoneMedia\AnalyticsEventTracking\Analytics\EventBroadcaster;
 use ProtoneMedia\AnalyticsEventTracking\Http\ClientIdRepository;
 use ProtoneMedia\AnalyticsEventTracking\Http\ClientIdSession;
+use ProtoneMedia\AnalyticsEventTracking\Http\SessionIdRepository;
+use ProtoneMedia\AnalyticsEventTracking\Http\SessionIdSession;
 use ProtoneMedia\AnalyticsEventTracking\Http\StoreClientIdInSession;
 use ProtoneMedia\AnalyticsEventTracking\Http\StoreSessionIdInSession;
 use ProtoneMedia\AnalyticsEventTracking\Listeners\DispatchAnalyticsJob;
@@ -70,6 +72,19 @@ class ServiceProvider extends BaseServiceProvider
             return new ClientIdSession(
                 $this->app->make('session.store'),
                 config('analytics-event-tracking.client_id_session_key')
+            );
+        });
+
+        $this->app->singleton(SessionIdRepository::class, SessionIdSession::class);
+
+        $this->app->bind('analytics-event-tracking.session-id', function () {
+            return $this->app->make(SessionIdSession::class)->get();
+        });
+
+        $this->app->singleton(SessionIdSession::class, function () {
+            return new SessionIdSession(
+                $this->app->make('session.store'),
+                config('analytics-event-tracking.session_id_session_key')
             );
         });
     }
