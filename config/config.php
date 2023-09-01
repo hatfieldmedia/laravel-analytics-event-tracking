@@ -37,6 +37,7 @@ return [
      * The session key to store the Client ID.
      */
     'client_id_session_key' => 'analytics-event-tracker-client-id',
+    'session_id_session_key' => 'analytics-event-tracker-session-id',
 
     /**
      * HTTP URI to post the Client ID to (from the Blade Directive).

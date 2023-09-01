@@ -5,7 +5,7 @@ namespace ProtoneMedia\AnalyticsEventTracking\Http;
 use Illuminate\Session\Store;
 use Illuminate\Support\Str;
 
-class ClientIdSession implements ClientIdRepository
+class SessionIdSession implements SessionIdRepository
 {
     private Store $session;
     private string $key;
@@ -17,11 +17,11 @@ class ClientIdSession implements ClientIdRepository
     }
 
     /**
-     * Stores the Client ID in the session.
+     * Stores the Session ID in the session.
      */
-    public function update(string $clientId): void
+    public function update(string $sessionId): void
     {
-        $this->session->put($this->key, $clientId);
+        $this->session->put($this->key, $sessionId);
     }
 
     /**
